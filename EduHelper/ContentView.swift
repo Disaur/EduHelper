@@ -8,24 +8,129 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
+    @State private var isShowingiPad = false
+    @State private var isShowingMac = false
+    @State private var isShowingAcc = false
     
     var body: some View {
         NavigationView{
-            ScrollView{
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 200))]) {
-                    iPadPricing
-                    //.aspectRatio(2/3, contentMode: .fit)
-                }
+            if isShowingiPad {
+                iPadPricing
             }
-            .navigationTitle("Apple Edu Pricing")
+            else {
+                ScrollView{
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 200))]) {
+                        HStack{
+                            Text("For Internal Use Only")
+                                .font(.headline)
+                                .fontWeight(.regular)
+                                .foregroundColor(Color.gray)
+                                .padding([.leading, .bottom, .trailing], 20.0)
+                            Spacer()
+                        }
+                        iPadButton.padding(.horizontal, 30.0)
+                        macButton.padding(.horizontal, 30.0)
+                        accButton.padding(.horizontal, 30.0)
+                        Text("@ Disaur")
+                            .font(.footnote)
+                            .fontWeight(.ultraLight)
+                            .foregroundColor(Color.gray)
+                            .padding(.all, 20.0)
+                    }
+                }
+                .background(Color(.systemGray6))
+                //.background(colorScheme == .dark ? Color(red: 38, green: 38, blue: 38) : Color(red: 242, green: 242, blue: 242))
+                .navigationTitle("China Edu Pricing")
+            }
         }
         .navigationViewStyle(.stack)
     }
     
+    var iPadButton: some View {
+        Button(action: {
+            isShowingiPad.toggle()
+        }) {
+            HStack {
+                Image(systemName: "ipad")
+                    .font(.largeTitle)
+                Text("   iPad")
+                    .fontWeight(.semibold)
+                    .font(.title)
+            }
+            //.foregroundColor(Color(UIColor.systemBackground))
+            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 150)
+        //.background(Color(UIColor.label))
+        .background(colorScheme == .dark ? Color.black : Color.white)
+        .buttonStyle(.borderless)
+        .cornerRadius(30)
+    }
     
+    var macButton: some View {
+        Button(action: {
+            print("Mac!")
+        }) {
+            HStack {
+                Image(systemName: "laptopcomputer")
+                    .font(.largeTitle)
+                Text("  Mac")
+                    .fontWeight(.semibold)
+                    .font(.title)
+            }
+            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 150)
+        .background(colorScheme == .dark ? Color.black : Color.white)
+        .buttonStyle(.borderless)
+        .cornerRadius(30)
+    }
+    
+    var accButton: some View {
+        Button(action: {
+            print("Accessory!")
+        }) {
+            HStack {
+                Image(systemName: "applepencil")
+                    .font(.largeTitle)
+                Text("Accessory")
+                    .fontWeight(.semibold)
+                    .font(.title)
+            }
+            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 150)
+        .background(colorScheme == .dark ? Color.black : Color.white)
+        .buttonStyle(.borderless)
+        .cornerRadius(30)
+    }
     
     var iPadPricing: some View {
         VStack {
+            Button(action: {
+                    isShowingiPad.toggle()
+                }) {
+                    HStack {
+                        Image(systemName: "chevron.backward.circle.fill")
+                            .font(.largeTitle)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    //.foregroundColor(Color(UIColor.systemBackground))
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 150)
+                //.background(Color(UIColor.label))
+                .background(colorScheme == .dark ? Color.black : Color.white)
+                .buttonStyle(.borderless)
+                .cornerRadius(30)
+            
             Text("iPad")
                 .font(.largeTitle)
                 .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -81,6 +186,7 @@ struct ContentView: View {
                 .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             Text("*註：不參與返校季活動")
                 .font(.footnote)
+                .padding(.bottom)
         }
         
     }
