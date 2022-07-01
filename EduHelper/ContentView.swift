@@ -54,60 +54,66 @@ struct ContentView: View {
         }) {
             HStack {
                 Image(systemName: "ipad")
-                    .font(.largeTitle)
-                Text("   iPad")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50)
+                Text("iPad")
                     .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .center)
                     .font(.title)
             }
             //.foregroundColor(Color(UIColor.systemBackground))
             .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 30))
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 150)
+        .frame(maxWidth: .infinity, minHeight: 120)
         //.background(Color(UIColor.label))
         .background(colorScheme == .dark ? Color.black : Color.white)
-        .buttonStyle(.borderless)
-        .cornerRadius(30)
+        .cornerRadius(20)
     }
     
     var macButton: some View {
         Button(action: {
-            print("Mac!")
+            isShowingMac.toggle()
         }) {
             HStack {
                 Image(systemName: "laptopcomputer")
-                    .font(.largeTitle)
-                Text("  Mac")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 80)
+                Text("Mac")
                     .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .center)
                     .font(.title)
             }
             .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .padding(EdgeInsets(top: 30, leading: 20, bottom: 30, trailing: 40))
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 150)
+        .frame(maxWidth: .infinity, minHeight: 120)
         .background(colorScheme == .dark ? Color.black : Color.white)
-        .buttonStyle(.borderless)
-        .cornerRadius(30)
+        .cornerRadius(20)
     }
     
     var accButton: some View {
         Button(action: {
-            print("Accessory!")
+            isShowingAcc.toggle()
         }) {
             HStack {
                 Image(systemName: "applepencil")
-                    .font(.largeTitle)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 45)
                 Text("Accessory")
                     .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .center)
                     .font(.title)
             }
             .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .padding(EdgeInsets(top: 30, leading: 40, bottom: 30, trailing: 30))
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 150)
+        .frame(maxWidth: .infinity, minHeight: 120)
         .background(colorScheme == .dark ? Color.black : Color.white)
-        .buttonStyle(.borderless)
-        .cornerRadius(30)
+        .cornerRadius(20)
     }
     
     var iPadPricing: some View {
