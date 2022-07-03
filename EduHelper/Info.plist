@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>iPad</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>all</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Mac</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>all</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIcon(systemImageName: "applepencil"</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Accessory</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>all</string>
+		</dict>
+	</array>
+</dict>
+</plist>
