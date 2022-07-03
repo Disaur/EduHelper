@@ -11,6 +11,8 @@
 		290892C5286DFA7500E7BD8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290892C4286DFA7500E7BD8F /* ContentView.swift */; };
 		290892C7286DFA7700E7BD8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 290892C6286DFA7700E7BD8F /* Assets.xcassets */; };
 		290892CA286DFA7700E7BD8F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 290892C9286DFA7700E7BD8F /* Preview Assets.xcassets */; };
+		2956D34428722D6300973B59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956D34328722D6300973B59 /* AppDelegate.swift */; };
+		2956D348287235C600973B59 /* MainSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956D347287235C600973B59 /* MainSceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		290892C9286DFA7700E7BD8F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		290892D028718CBD00E7BD8F /* EduHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EduHelper.entitlements; sourceTree = "<group>"; };
 		290892D1287190E200E7BD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2956D34328722D6300973B59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2956D347287235C600973B59 /* MainSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +58,10 @@
 			isa = PBXGroup;
 			children = (
 				290892D1287190E200E7BD8F /* Info.plist */,
+				2956D347287235C600973B59 /* MainSceneDelegate.swift */,
 				290892D028718CBD00E7BD8F /* EduHelper.entitlements */,
 				290892C2286DFA7500E7BD8F /* EduHelperApp.swift */,
+				2956D34328722D6300973B59 /* AppDelegate.swift */,
 				290892C4286DFA7500E7BD8F /* ContentView.swift */,
 				290892C6286DFA7700E7BD8F /* Assets.xcassets */,
 				290892C8286DFA7700E7BD8F /* Preview Content */,
@@ -141,7 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2956D348287235C600973B59 /* MainSceneDelegate.swift in Sources */,
 				290892C5286DFA7500E7BD8F /* ContentView.swift in Sources */,
+				2956D34428722D6300973B59 /* AppDelegate.swift in Sources */,
 				290892C3286DFA7500E7BD8F /* EduHelperApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 extension UINavigationController: UIGestureRecognizerDelegate {
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +16,7 @@ extension UINavigationController: UIGestureRecognizerDelegate {
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return viewControllers.count > 1
     }
-
+    
     // To make it works also with ScrollView
 //    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 //        true
@@ -27,6 +26,9 @@ extension UINavigationController: UIGestureRecognizerDelegate {
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) private var openURL
+    @State private var quickiPad = false
+    @State private var quickMac = false
+    @State private var quickAcc = false
     
     var body: some View {
         NavigationView{
@@ -40,21 +42,15 @@ struct ContentView: View {
                             .padding([.leading, .bottom, .trailing], 20.0)
                         Spacer()
                     }
-                NavigationLink(destination:
-                                iPadPricing()
-                                , label: {
-                    iPadButton.padding(.horizontal, 30.0)
-                })
-                NavigationLink(destination:
-                                macPricing()
-                                , label: {
-                    macButton.padding(.horizontal, 30.0)
-                })
-                NavigationLink(destination:
-                                accPricing()
-                                , label: {
-                    accButton.padding(.horizontal, 30.0)
-                })
+                NavigationLink(destination: iPadPricing(),
+                               isActive: $quickiPad,
+                               label: {iPadButton.padding(.horizontal, 30.0)})
+                NavigationLink(destination: macPricing(),
+                               isActive: $quickMac,
+                               label: {macButton.padding(.horizontal, 30.0)})
+                NavigationLink(destination: accPricing(),
+                               isActive: $quickAcc,
+                               label: {accButton.padding(.horizontal, 30.0)})
                 Text("Useful Links")
                     .font(.callout)
                     .fontWeight(.light)
@@ -69,8 +65,19 @@ struct ContentView: View {
             }
             .background(Color(.systemGray6))
                 //.background(colorScheme == .dark ? Color(red: 38, green: 38, blue: 38) : Color(red: 242, green: 242, blue: 242))
-            .navigationTitle("China Edu Pricing")}
+        .navigationTitle("China Edu Pricing")}
         .navigationViewStyle(.stack)
+        .onOpenURL {
+            url in switch url.path {
+            case "/iPad":
+                self.quickiPad = true
+            case "/mac":
+                self.quickMac = true
+            case "/acc":
+                self.quickAcc = true
+            default: break
+            }
+        }
     }
     
     var iPadButton: some View {

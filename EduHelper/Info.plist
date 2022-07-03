@@ -6,27 +6,42 @@
 	<dict/>
 	<key>CFBundleIcons~ipad</key>
 	<dict/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>eduhelper</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>ipad</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>iPad</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>all</string>
+			<string>ipad</string>
 		</dict>
 		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>laptopcomputer</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Mac</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>all</string>
+			<string>mac</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIcon(systemImageName: "applepencil"</string>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>applepencil</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Accessory</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>all</string>
+			<string>acc</string>
 		</dict>
 	</array>
 </dict>
