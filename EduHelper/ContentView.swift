@@ -60,7 +60,12 @@ struct ContentView: View {
                     .font(.footnote)
                     .fontWeight(.ultraLight)
                     .foregroundColor(Color.gray)
-                    .padding(.all, 20.0)
+                    .padding([.leading, .top, .trailing], 20.0)
+                Text("Ver. 1.0(2)")
+                    .font(.caption)
+                    .fontWeight(.ultraLight)
+                    .foregroundColor(Color.gray)
+                    .padding(.all, 1)
                 //}
             }
             .background(Color(.systemGray6))
@@ -137,16 +142,40 @@ struct ContentView: View {
     }
     
     var quickButton: some View {
-        Button(action: {
-            if let url = URL(string: "applestore://") {
-                openURL(url)}
-        }) {Text("Apple Store")
-                .fontWeight(.thin)
-                .padding(.horizontal)
-                .foregroundColor(Color.gray)
-                .frame(maxWidth: 200, alignment: .center)
-                .font(.body)
-            }
+        VStack{
+            Button(action: {
+                if let url = URL(string: "https://support.apple.com/zh-cn/ipad/repair/service") {
+                    openURL(url)}
+            }) {Text("iPad Service Pricing")
+                    .fontWeight(.thin)
+                    .padding(.horizontal)
+                    .foregroundColor(Color.gray)
+                    .frame(maxWidth: 200, alignment: .center)
+                    .font(.body)
+                }
+            .padding(.bottom, 1)
+            Button(action: {
+                if let url = URL(string: "https://support.apple.com/zh-cn/mac/repair/service") {
+                    openURL(url)}
+            }) {Text("Mac Service Pricing")
+                    .fontWeight(.thin)
+                    .padding(.horizontal)
+                    .foregroundColor(Color.gray)
+                    .frame(maxWidth: 200, alignment: .center)
+                    .font(.body)
+                }
+            .padding(.bottom, 1)
+            Button(action: {
+                if let url = URL(string: "applestore://") {
+                    openURL(url)}
+            }) {Text("Apple Store")
+                    .fontWeight(.thin)
+                    .padding(.horizontal)
+                    .foregroundColor(Color.gray)
+                    .frame(maxWidth: 200, alignment: .center)
+                    .font(.body)
+                }
+        }
     }
     
     
@@ -327,19 +356,23 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 798")
-                    .font(.headline)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                Text("*註：八折優惠僅限返校季期間")
-                    .font(.footnote)
-                    .padding(.bottom)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("798")
+                        .font(.headline)
+                    Text("(BTS 20% off)")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
                 Text("iPad Pro 12.9'' (5th Gen)")
                     .font(.title)
                     .fontWeight(.bold)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .padding(.all)
                 HStack{
                     Spacer()
                     VStack{
@@ -405,12 +438,16 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 958")
-                    .font(.headline)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                Text("*註：八折優惠僅限返校季期間")
-                    .font(.footnote)
-                    .padding(.bottom)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("958")
+                        .font(.headline)
+                    Text("(BTS 20% off)")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
@@ -453,12 +490,16 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 518")
-                    .font(.headline)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                Text("*註：八折優惠僅限返校季期間")
-                    .font(.footnote)
-                    .padding(.bottom)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("518")
+                        .font(.headline)
+                    Text("(BTS 20% off)")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
@@ -501,12 +542,16 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 548")
-                    .font(.headline)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                Text("*註：不參與返校季活動")
-                    .font(.footnote)
-                    .padding(.bottom)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("548")
+                        .font(.headline)
+                    Text("(No BTS promo)")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
@@ -549,12 +594,16 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 548")
-                    .font(.headline)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                Text("*註：不參與返校季活動")
-                    .font(.footnote)
-                    .padding(.bottom)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("548")
+                        .font(.headline)
+                    Text("(No BTS promo)")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
             } else if scene == 2 {
@@ -634,9 +683,14 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 998")
-                    .font(.headline)
-                    .padding(.vertical)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("998")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
@@ -709,9 +763,14 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 1198")
-                    .font(.headline)
-                    .padding(.vertical)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("1198")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
@@ -754,9 +813,14 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 648")
-                    .font(.headline)
-                    .padding(.vertical)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("648")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
@@ -799,9 +863,14 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 548")
-                    .font(.headline)
-                    .padding(.vertical)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("548")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
@@ -844,9 +913,14 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 548")
-                    .font(.headline)
-                    .padding(.vertical)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("548")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
             } else {
@@ -926,12 +1000,16 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 200")
-                    .font(.headline)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                Text("*註：八折優惠僅限返校季期間")
-                    .font(.footnote)
-                    .padding(.bottom)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("200")
+                        .font(.headline)
+                    Text("(BTS 20% off)")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
@@ -1004,12 +1082,16 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 240")
-                    .font(.headline)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                Text("*註：八折優惠僅限返校季期間")
-                    .font(.footnote)
-                    .padding(.bottom)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("240")
+                        .font(.headline)
+                    Text("(BTS 20% off)")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
@@ -1052,12 +1134,16 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("AppleCare+: 130")
-                    .font(.headline)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                Text("*註：八折優惠僅限返校季期間")
-                    .font(.footnote)
-                    .padding(.bottom)
+                    Image("applecare")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                        .padding([.leading, .top, .trailing])
+                    Text("130")
+                        .font(.headline)
+                    Text("(BTS 20% off)")
+                        .font(.headline)
+                        .padding([.leading, .bottom, .trailing])
                 }
                 
                 Group{
@@ -1100,9 +1186,9 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("*註：不參與返校季活動")
-                    .font(.footnote)
-                    .padding(.all)
+                    Text("(No BTS promo)")
+                        .font(.headline)
+                        .padding(.all)
                 }
                 
                 Group{
@@ -1145,9 +1231,9 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
-                Text("*註：不參與返校季活動")
-                    .font(.footnote)
-                    .padding(.all)
+                    Text("(No BTS promo)")
+                        .font(.headline)
+                        .padding(.all)
                 }
                 
             }
@@ -1303,15 +1389,22 @@ struct ContentView: View {
                                 .font(.body)
                                 .multilineTextAlignment(.center)
                                 .padding(.all, 10.0)
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Text("AppleCare+:\nM2: 1118\nM1: 998")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("*註：八折優惠僅限返校季期間")
-                        .font(.footnote)
-                        .padding(.bottom)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("M2 - 1118")
+                            .font(.headline)
+                        Text("M1 - 998")
+                            .font(.headline)
+                        Text("(BTS 20% off)")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -1387,15 +1480,24 @@ struct ContentView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Text("AppleCare+:\n13'': 1318\n14'': 1398\n16'': 2078")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("*註：八折優惠僅限返校季期間")
-                        .font(.footnote)
-                        .padding(.bottom)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("13'' - 1318")
+                            .font(.headline)
+                        Text("14'' - 1398")
+                            .font(.headline)
+                        Text("16'' - 2078")
+                            .font(.headline)
+                        Text("(BTS 20% off)")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -1430,12 +1532,16 @@ struct ContentView: View {
                         }
                         Spacer()
                     }
-                    Text("AppleCare+: 934")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("*註：八折優惠僅限返校季期間")
-                        .font(.footnote)
-                        .padding(.bottom)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("934")
+                            .font(.headline)
+                        Text("(BTS 20% off)")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -1480,15 +1586,22 @@ struct ContentView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Text("AppleCare+:\nMac mini: 681\nMac Studio: 1198")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("*註：不參與返校季活動")
-                        .font(.footnote)
-                        .padding(.bottom)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("Mac mini - 681")
+                            .font(.headline)
+                        Text("Mac Studio - 1198")
+                            .font(.headline)
+                        Text("(No BTS promo)")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -1523,12 +1636,16 @@ struct ContentView: View {
                         }
                         Spacer()
                     }
-                    Text("AppleCare+: 898")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("*註：不參與返校季活動")
-                        .font(.footnote)
-                        .padding(.bottom)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("898")
+                            .font(.headline)
+                        Text("(No BTS promo)")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                 } else if scene == 2 {
@@ -1576,12 +1693,20 @@ struct ContentView: View {
                                 .font(.body)
                                 .multilineTextAlignment(.center)
                                 .padding(.all, 10.0)
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Text("AppleCare+:\nM2: 1398\nM1: 1248")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("M2 - 1398")
+                            .font(.headline)
+                        Text("M1 - 1248")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -1657,12 +1782,22 @@ struct ContentView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Text("AppleCare+:\n13'': 1648\n14'': 1748\n16'': 2598")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("13'' - 1648")
+                            .font(.headline)
+                        Text("14'' - 1748")
+                            .font(.headline)
+                        Text("16'' - 2598")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -1697,9 +1832,14 @@ struct ContentView: View {
                         }
                         Spacer()
                     }
-                    Text("AppleCare+: 1168")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("1168")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -1744,12 +1884,20 @@ struct ContentView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Text("AppleCare+:\nMac mini: 681\nMac Studio: 1198")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("Mac mini - 681")
+                            .font(.headline)
+                        Text("Mac Studio - 1198")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -1784,9 +1932,14 @@ struct ContentView: View {
                         }
                         Spacer()
                     }
-                    Text("AppleCare+: 898")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("898")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                 } else {
@@ -1834,15 +1987,22 @@ struct ContentView: View {
                                 .font(.body)
                                 .multilineTextAlignment(.center)
                                 .padding(.all, 10.0)
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Text("AppleCare+:\nM2: 271\nM1: 250")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("*註：八折優惠僅限返校季期間")
-                        .font(.footnote)
-                        .padding(.bottom)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("M2 - 271")
+                            .font(.headline)
+                        Text("M1 - 250")
+                            .font(.headline)
+                        Text("(BTS 20% off)")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -1918,15 +2078,24 @@ struct ContentView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Text("AppleCare+:\n13'': 330\n14'': 350\n16'': 520")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("*註：八折優惠僅限返校季期間")
-                        .font(.footnote)
-                        .padding(.bottom)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("13'' - 330")
+                            .font(.headline)
+                        Text("14'' - 350")
+                            .font(.headline)
+                        Text("16'' - 520")
+                            .font(.headline)
+                        Text("(BTS 20% off)")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -1961,12 +2130,16 @@ struct ContentView: View {
                         }
                         Spacer()
                     }
-                    Text("AppleCare+: 234")
-                        .font(.headline)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    Text("*註：八折優惠僅限返校季期間")
-                        .font(.footnote)
-                        .padding(.bottom)
+                        Image("applecare")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
+                            .padding([.leading, .top, .trailing])
+                        Text("234")
+                            .font(.headline)
+                        Text("(BTS 20% off)")
+                            .font(.headline)
+                            .padding([.leading, .bottom, .trailing])
                     }
                     
                     Group{
@@ -2011,12 +2184,13 @@ struct ContentView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Text("*註：不參與返校季活動")
-                        .font(.footnote)
-                        .padding(.all)
+                        Text("(No BTS promo)")
+                            .font(.headline)
+                            .padding(.all)
                     }
                     
                     Group{
@@ -2051,9 +2225,9 @@ struct ContentView: View {
                         }
                         Spacer()
                     }
-                    Text("*註：不參與返校季活動")
-                        .font(.footnote)
-                        .padding(.all)
+                        Text("(No BTS promo)")
+                            .font(.headline)
+                            .padding(.all)
                     }
                 }
             }
@@ -2170,7 +2344,7 @@ struct ContentView: View {
                 }.padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 
                 Group{
-                Text("iPad 配件")
+                Text("iPad Acc.")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -2219,7 +2393,7 @@ struct ContentView: View {
                 }
                 
                 Group{
-                Text("Mac 軟件")
+                Text("Mac Apps")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -2270,7 +2444,7 @@ struct ContentView: View {
                 }.padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 
                 Group{
-                Text("iPad 配件")
+                Text("iPad Acc.")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -2319,7 +2493,7 @@ struct ContentView: View {
                 }
                 
                 Group{
-                Text("Mac 軟件")
+                Text("Mac Apps")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -2371,7 +2545,7 @@ struct ContentView: View {
                 }.padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 
                 Group{
-                Text("iPad 配件")
+                Text("iPad Acc.")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -2420,7 +2594,7 @@ struct ContentView: View {
                 }}
             
             Group{
-            Text("Mac 軟件")
+            Text("Mac Apps")
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -2451,7 +2625,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .preferredColorScheme(.light)
-            .previewInterfaceOrientation(.landscapeLeft)
+            .previewInterfaceOrientation(.landscapeRight)
         ContentView()
             .preferredColorScheme(.dark)
     }
