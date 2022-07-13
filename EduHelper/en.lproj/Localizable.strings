@@ -1,0 +1,54 @@
+/* 
+  Localizable.strings
+  EduHelper
+
+  Created by Disaur on 12/7/2022.
+  
+*/
+
+"appName" = "Education Helper";
+//"welcome %@" = "Current Store Locale: %@";
+"welcome" = "Current Store Locale:";
+"usLocale" = "United States";
+"cnLocale" = "Mainland China";
+//"region" = "Mainland China";
+"Accessory" = "Accessory";
+"usefullinks" = "Useful Links";
+"trademark" = "Apple, AirPods, the AppleCare+ logo, Mac, iPad, Apple Pencil, Magic Keyboard, Smart Keyboard, Final Cut Pro, Logic Pro, Motion, Compressor, Mainstage and Apple Store are trademarks of Apple Inc.";
+"ipadService" = "iPad Service Pricing";
+"macService" = "Mac Service Pricing";
+"education" = "Educ.";
+"original" = "Orig.";
+"discount" = "Disc.";
+
+"(BTS 20% off)" = "(BTS 20% off)";
+"(No BTS promo)" = "(No BTS promo)";
+
+"iPad Pro 11'' (3rd Gen)" = "iPad Pro 11'' (3rd Gen)";
+"iPad Pro 12.9'' (5th Gen)" = "iPad Pro 12.9'' (5th Gen)";
+"iPad Air (5th Gen)" = "iPad Air (5th Gen)";
+"iPad mini (6th Gen)" = "iPad mini (6th Gen)";
+"iPad (9th Gen)" = "iPad (9th Gen)";
+"WiFi + Cellular" = "WiFi + Cellular";
+
+"M1 Series" = "M1 Series";
+"M2 Series" = "M2 Series";
+"Desktop Mac" = "Desktop Mac";
+"7-Core GPU %@" = "%@ (7-Core GPU)";
+"8-Core GPU %@" = "%@ (8-Core GPU)";
+"Standard Glass" = "Standard Glass";
+"Nano-Texture Glass" = "Nano-Texture Glass";
+"+ Height-Adjustable Stand" = "+ Height-Adjustable Stand";
+
+"iPad Acc." = "iPad Acc.";
+"1st-Gen %@" = "1st-Gen %@";
+"2nd-Gen %@" = "2nd-Gen %@";
+"Magic Keyboard %@" = "%@ Magic Keyboard";
+"Smart Keyboard %@" = "%@ Smart Keyboard";
+"Smart Keyboard Folio %@" = "%@ Smart Keyboard Folio";
+"Mac Apps" = "Mac Apps";
+"Pro Apps Education Bundle" = "Pro Apps Education Bundle";
+"Bundle Price" = "Bundle Price:";
+"Total" = "Total:";
+
+

@@ -1,0 +1,54 @@
+/*
+  Localizable.strings
+  EduHelper
+
+  Created by Disaur on 12/7/2022.
+  
+*/
+
+"appName" = "教育助手";
+//"welcome %@" = "当前商店地区: %@";
+"welcome" = "当前商店地区:";
+"usLocale" = "美国";
+"cnLocale" = "中国大陆";
+//"region" = "中国大陆";
+"Accessory" = "配件";
+"usefullinks" = "实用链接";
+"trademark" = "Apple, AirPods, AppleCare+ logo, Mac, iPad, Apple Pencil, Magic Keyboard, Smart Keyboard, Final Cut Pro, Logic Pro, Motion, Compressor, Mainstage 和 Apple Store 是 Apple Inc. 的商标。";
+"ipadService" = "iPad服务定价";
+"macService" = "Mac服务定价";
+"education" = "教育";
+"original" = "原价";
+"discount" = "优惠";
+
+"(BTS 20% off)" = "(返校季八折)";
+"(No BTS promo)" = "(不参与返校优惠)";
+
+"iPad Pro 11'' (3rd Gen)" = "iPad Pro 11'' (第三代)";
+"iPad Pro 12.9'' (5th Gen)" = "iPad Pro 12.9'' (第五代)";
+"iPad Air (5th Gen)" = "iPad Air (第五代)";
+"iPad mini (6th Gen)" = "iPad mini (第六代)";
+"iPad (9th Gen)" = "iPad (第九代)";
+"WiFi + Cellular" = "WiFi + 蜂窝数据";
+
+"M1 Series" = "M1 系列";
+"M2 Series" = "M2 系列";
+"Desktop Mac" = "Mac 主机";
+"7-Core GPU %@" = "%@ (7核 GPU)";
+"8-Core GPU %@" = "%@ (8核 GPU)";
+"Standard Glass" = "标准玻璃";
+"Nano-Texture Glass" = "纳米纹理玻璃";
+"+ Height-Adjustable Stand" = "+ 可调高度支架";
+
+"iPad Acc." = "iPad 配件";
+"1st-Gen %@" = "1代 %@";
+"2nd-Gen %@" = "2代 %@";
+"Magic Keyboard %@" = "%@ 秒控键盘";
+"Smart Keyboard %@" = "%@ 智能键盘";
+"Smart Keyboard Folio %@" = "%@ 键盘式智能双面夹";
+"Mac Apps" = "Mac 软件";
+"Pro Apps Education Bundle" = "Pro Apps 教育套件";
+"Bundle Price" = "套装价格:";
+"Total" = "总价:";
+
+

@@ -11,6 +11,7 @@
 		290892C5286DFA7500E7BD8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290892C4286DFA7500E7BD8F /* ContentView.swift */; };
 		290892C7286DFA7700E7BD8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 290892C6286DFA7700E7BD8F /* Assets.xcassets */; };
 		290892CA286DFA7700E7BD8F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 290892C9286DFA7700E7BD8F /* Preview Assets.xcassets */; };
+		29186228287DE22300B68570 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2918622A287DE22300B68570 /* Localizable.strings */; };
 		2956D34428722D6300973B59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956D34328722D6300973B59 /* AppDelegate.swift */; };
 		2956D348287235C600973B59 /* MainSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956D347287235C600973B59 /* MainSceneDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -23,6 +24,9 @@
 		290892C9286DFA7700E7BD8F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		290892D028718CBD00E7BD8F /* EduHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EduHelper.entitlements; sourceTree = "<group>"; };
 		290892D1287190E200E7BD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		29186229287DE22300B68570 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2918622E287DF19500B68570 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		2918622F287ED1DF00B68570 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2956D34328722D6300973B59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2956D347287235C600973B59 /* MainSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +61,7 @@
 		290892C1286DFA7500E7BD8F /* EduHelper */ = {
 			isa = PBXGroup;
 			children = (
+				2918622A287DE22300B68570 /* Localizable.strings */,
 				290892D1287190E200E7BD8F /* Info.plist */,
 				2956D347287235C600973B59 /* MainSceneDelegate.swift */,
 				290892D028718CBD00E7BD8F /* EduHelper.entitlements */,
@@ -119,6 +124,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
+				"zh-Hans",
 			);
 			mainGroup = 290892B6286DFA7500E7BD8F;
 			productRefGroup = 290892C0286DFA7500E7BD8F /* Products */;
@@ -136,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				290892CA286DFA7700E7BD8F /* Preview Assets.xcassets in Resources */,
+				29186228287DE22300B68570 /* Localizable.strings in Resources */,
 				290892C7286DFA7700E7BD8F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,6 +163,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2918622A287DE22300B68570 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				29186229287DE22300B68570 /* en */,
+				2918622E287DF19500B68570 /* zh-Hant */,
+				2918622F287ED1DF00B68570 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		290892CB286DFA7700E7BD8F /* Debug */ = {
@@ -280,7 +301,7 @@
 				CODE_SIGN_ENTITLEMENTS = EduHelper/EduHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development: Zengtai Qi (SRLTK2GEZR)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"EduHelper/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
@@ -320,7 +341,7 @@
 				CODE_SIGN_ENTITLEMENTS = EduHelper/EduHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development: Zengtai Qi (SRLTK2GEZR)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"EduHelper/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;

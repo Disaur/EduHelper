@@ -29,19 +29,28 @@ struct ContentView: View {
     @State private var quickiPad = false
     @State private var quickMac = false
     @State private var quickAcc = false
+    @State private var isUS = false
     
     var body: some View {
         NavigationView{
             ScrollView{
                 //LazyVGrid(columns: [GridItem(.adaptive(minimum: 200))]) {
-                    HStack{
-                        Text("For Internal Use Only")
-                            .font(.headline)
-                            .fontWeight(.regular)
-                            .foregroundColor(Color.gray)
-                            .padding([.leading, .bottom, .trailing], 20.0)
-                        Spacer()
-                    }
+                HStack{
+                    //Text("Back to School Shopping Guide")
+                    //Text("welcome \(region)")
+                    //Text(welcomeStringKey) + Text(regionStringKey)
+                    Text("welcome")
+                        .font(.headline)
+                        .fontWeight(.regular)
+                        .foregroundColor(Color.gray)
+                        .padding([.leading, .bottom], 20.0)
+                    Text(isUS ? "usLocale" : "cnLocale")
+                        .font(.headline)
+                        .fontWeight(.regular)
+                        .foregroundColor(Color.gray)
+                        .padding([.bottom, .trailing], 20.0)
+                    Spacer()
+                }
                 NavigationLink(destination: iPadPricing(),
                                isActive: $quickiPad,
                                label: {iPadButton.padding(.horizontal, 30.0)})
@@ -51,17 +60,22 @@ struct ContentView: View {
                 NavigationLink(destination: accPricing(),
                                isActive: $quickAcc,
                                label: {accButton.padding(.horizontal, 30.0)})
-                Text("Useful Links")
+                Text("usefullinks")
                     .font(.callout)
                     .fontWeight(.light)
                     .padding([.top, .leading, .trailing], 20.0)
                 quickButton.padding(1.0)
+                Text("trademark")
+                    .font(.footnote)
+                    .fontWeight(.ultraLight)
+                    .foregroundColor(Color.gray)
+                    .padding([.leading, .top, .trailing], 20.0)
                 Text("@ Disaur")
                     .font(.footnote)
                     .fontWeight(.ultraLight)
                     .foregroundColor(Color.gray)
                     .padding([.leading, .top, .trailing], 20.0)
-                Text("Ver. 1.0(2)")
+                Text("Ver. 1.0(5)")
                     .font(.caption)
                     .fontWeight(.ultraLight)
                     .foregroundColor(Color.gray)
@@ -70,7 +84,7 @@ struct ContentView: View {
             }
             .background(Color(.systemGray6))
                 //.background(colorScheme == .dark ? Color(red: 38, green: 38, blue: 38) : Color(red: 242, green: 242, blue: 242))
-        .navigationTitle("China Edu Pricing")}
+        .navigationTitle("appName")}
         .navigationViewStyle(.stack)
         .onOpenURL {
             url in switch url.path {
@@ -146,7 +160,7 @@ struct ContentView: View {
             Button(action: {
                 if let url = URL(string: "https://support.apple.com/zh-cn/ipad/repair/service") {
                     openURL(url)}
-            }) {Text("iPad Service Pricing")
+            }) {Text("ipadService")
                     .fontWeight(.thin)
                     .padding(.horizontal)
                     .foregroundColor(Color.gray)
@@ -157,7 +171,7 @@ struct ContentView: View {
             Button(action: {
                 if let url = URL(string: "https://support.apple.com/zh-cn/mac/repair/service") {
                     openURL(url)}
-            }) {Text("Mac Service Pricing")
+            }) {Text("macService")
                     .fontWeight(.thin)
                     .padding(.horizontal)
                     .foregroundColor(Color.gray)
@@ -196,9 +210,20 @@ struct ContentView: View {
             }
         }
         
+        var switchButton: some View { Button(action: {
+            if scene == 1 {scene = 2}
+            else if scene == 2 {scene = 3}
+            else {scene = 1}
+                }) {
+                        Image(systemName: "repeat.circle.fill")
+                            .font(.title3)
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                }
+            }
+        
         var discountOn: some View {
             Button(action: {
-            }) {Text("教育")
+            }) {Text("education")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -212,7 +237,7 @@ struct ContentView: View {
         var discountOff: some View {
             Button(action: {
                     scene = 1
-                }) {Text("教育")
+                }) {Text("education")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -225,7 +250,7 @@ struct ContentView: View {
         
         var originalOn: some View {
             Button(action: {
-            }) {Text("原價")
+            }) {Text("original")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -239,7 +264,7 @@ struct ContentView: View {
         var originalOff: some View {
             Button(action: {
                     scene = 2
-                }) {Text("原價")
+                }) {Text("original")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -252,7 +277,7 @@ struct ContentView: View {
         
         var differenceOn: some View {
             Button(action: {
-            }) {Text("價差")
+            }) {Text("discount")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -266,7 +291,7 @@ struct ContentView: View {
         var differenceOff: some View {
             Button(action: {
                     scene = 3
-                }) {Text("價差")
+                }) {Text("discount")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -1241,7 +1266,7 @@ struct ContentView: View {
         }
         .navigationTitle("iPad")
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton)
+        .navigationBarItems(leading: backButton, trailing: switchButton)
     }
 }
 
@@ -1260,10 +1285,21 @@ struct ContentView: View {
                             .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 }
             }
+        
+        var switchButton: some View { Button(action: {
+            if scene == 1 {scene = 2}
+            else if scene == 2 {scene = 3}
+            else {scene = 1}
+                }) {
+                        Image(systemName: "repeat.circle.fill")
+                            .font(.title3)
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                }
+            }
             
             var discountOn: some View {
                 Button(action: {
-                }) {Text("教育")
+                }) {Text("education")
                         .fontWeight(.medium)
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         .frame(maxWidth: 130, alignment: .center)
@@ -1277,7 +1313,7 @@ struct ContentView: View {
             var discountOff: some View {
                 Button(action: {
                         scene = 1
-                    }) {Text("教育")
+                    }) {Text("education")
                         .fontWeight(.medium)
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         .frame(maxWidth: 130, alignment: .center)
@@ -1290,7 +1326,7 @@ struct ContentView: View {
             
             var originalOn: some View {
                 Button(action: {
-                }) {Text("原價")
+                }) {Text("original")
                         .fontWeight(.medium)
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         .frame(maxWidth: 130, alignment: .center)
@@ -1304,7 +1340,7 @@ struct ContentView: View {
             var originalOff: some View {
                 Button(action: {
                         scene = 2
-                    }) {Text("原價")
+                    }) {Text("original")
                         .fontWeight(.medium)
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         .frame(maxWidth: 130, alignment: .center)
@@ -1317,7 +1353,7 @@ struct ContentView: View {
             
             var differenceOn: some View {
                 Button(action: {
-                }) {Text("價差")
+                }) {Text("discount")
                         .fontWeight(.medium)
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         .frame(maxWidth: 130, alignment: .center)
@@ -1331,7 +1367,7 @@ struct ContentView: View {
             var differenceOff: some View {
                 Button(action: {
                         scene = 3
-                    }) {Text("價差")
+                    }) {Text("discount")
                         .fontWeight(.medium)
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         .frame(maxWidth: 130, alignment: .center)
@@ -1508,15 +1544,26 @@ struct ContentView: View {
                     HStack{
                         Spacer()
                         VStack{
-                            Text("8GB+256GB (7核GPU)\n9599")
+                            Text("7-Core GPU \("8GB+256GB")")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
-                                .padding(.all, 10.0)
-                            Text("8GB+256GB (8核GPU)\n10699")
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("9599")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("8-Core GPU \("8GB+256GB")")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("10699")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
                         }
                         Spacer()
                         VStack{
@@ -1529,6 +1576,7 @@ struct ContentView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding(.all, 10.0)
                         }
                         Spacer()
                     }
@@ -1545,7 +1593,7 @@ struct ContentView: View {
                     }
                     
                     Group{
-                    Text("Mac 主機")
+                    Text("Desktop Mac")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -1612,27 +1660,49 @@ struct ContentView: View {
                     HStack{
                         Spacer()
                         VStack{
-                            Text("標準玻璃\n10799")
+                            Text("Standard Glass")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
-                                .padding(.all, 10.0)
-                            Text("標準玻璃可調高度\n13799")
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("10799")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("+ Height-Adjustable Stand")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("13799")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
                         }
                         Spacer()
                         VStack{
-                            Text("納米紋理玻璃\n12799")
+                            Text("Nano-Texture Glass")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
-                                .padding(.all, 10.0)
-                            Text("納米紋理玻璃可調高度\n15799")
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("12799")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("+ Height-Adjustable Stand")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("15799")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
                         }
                         Spacer()
                     }
@@ -1808,15 +1878,26 @@ struct ContentView: View {
                     HStack{
                         Spacer()
                         VStack{
-                            Text("8GB+256GB (7核GPU)\n9999")
+                            Text("7-Core GPU \("8GB+256GB")")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
-                                .padding(.all, 10.0)
-                            Text("8GB+256GB (8核GPU)\n11499")
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("9999")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("8-Core GPU \("8GB+256GB")")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("11499")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
                         }
                         Spacer()
                         VStack{
@@ -1829,6 +1910,7 @@ struct ContentView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding(.all, 10.0)
                         }
                         Spacer()
                     }
@@ -1843,7 +1925,7 @@ struct ContentView: View {
                     }
                     
                     Group{
-                    Text("Mac 主機")
+                    Text("Desktop Mac")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -1908,27 +1990,49 @@ struct ContentView: View {
                     HStack{
                         Spacer()
                         VStack{
-                            Text("標準玻璃\n11499")
+                            Text("Standard Glass")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
-                                .padding(.all, 10.0)
-                            Text("標準玻璃可調高度\n14499")
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("11499")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("+ Height-Adjustable Stand")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("14499")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
                         }
                         Spacer()
                         VStack{
-                            Text("納米紋理玻璃\n13499")
+                            Text("Nano-Texture Glass")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
-                                .padding(.all, 10.0)
-                            Text("納米紋理玻璃可調高度\n16499")
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("13499")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("+ Height-Adjustable Stand")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("16499")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
                         }
                         Spacer()
                     }
@@ -2106,15 +2210,26 @@ struct ContentView: View {
                     HStack{
                         Spacer()
                         VStack{
-                            Text("8GB+256GB (7核GPU)\n400")
+                            Text("7-Core GPU \("8GB+256GB")")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
-                                .padding(.all, 10.0)
-                            Text("8GB+256GB (8核GPU)\n800")
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("400")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("8-Core GPU \("8GB+256GB")")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("800")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
                         }
                         Spacer()
                         VStack{
@@ -2127,6 +2242,7 @@ struct ContentView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding(.all, 10.0)
                         }
                         Spacer()
                     }
@@ -2143,7 +2259,7 @@ struct ContentView: View {
                     }
                     
                     Group{
-                    Text("Mac 主機")
+                    Text("Desktop Mac")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -2201,27 +2317,49 @@ struct ContentView: View {
                     HStack{
                         Spacer()
                         VStack{
-                            Text("標準玻璃\n700")
+                            Text("Standard Glass")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
-                                .padding(.all, 10.0)
-                            Text("標準玻璃可調高度\n700")
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("700")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("+ Height-Adjustable Stand")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("700")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
                         }
                         Spacer()
                         VStack{
-                            Text("納米紋理玻璃\n700")
+                            Text("Nano-Texture Glass")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
-                                .padding(.all, 10.0)
-                            Text("納米紋理玻璃可調高度\n700")
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("700")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .font(.body)
                                 .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("+ Height-Adjustable Stand")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .top, .trailing], 10.0)
+                            Text("700")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
                         }
                         Spacer()
                     }
@@ -2233,7 +2371,7 @@ struct ContentView: View {
             }
             .navigationTitle("Mac")
             .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: backButton)
+            .navigationBarItems(leading: backButton, trailing: switchButton)
         }
     }
 
@@ -2253,9 +2391,20 @@ struct ContentView: View {
             }
         }
         
+        var switchButton: some View { Button(action: {
+            if scene == 1 {scene = 2}
+            else if scene == 2 {scene = 3}
+            else {scene = 1}
+                }) {
+                        Image(systemName: "repeat.circle.fill")
+                            .font(.title3)
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                }
+            }
+        
         var discountOn: some View {
             Button(action: {
-            }) {Text("教育")
+            }) {Text("education")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -2269,7 +2418,7 @@ struct ContentView: View {
         var discountOff: some View {
             Button(action: {
                     scene = 1
-                }) {Text("教育")
+                }) {Text("education")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -2282,7 +2431,7 @@ struct ContentView: View {
         
         var originalOn: some View {
             Button(action: {
-            }) {Text("原價")
+            }) {Text("original")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -2296,7 +2445,7 @@ struct ContentView: View {
         var originalOff: some View {
             Button(action: {
                     scene = 2
-                }) {Text("原價")
+                }) {Text("original")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -2309,7 +2458,7 @@ struct ContentView: View {
         
         var differenceOn: some View {
             Button(action: {
-            }) {Text("價差")
+            }) {Text("discount")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -2323,7 +2472,7 @@ struct ContentView: View {
         var differenceOff: some View {
             Button(action: {
                     scene = 3
-                }) {Text("價差")
+                }) {Text("discount")
                     .fontWeight(.medium)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(maxWidth: 130, alignment: .center)
@@ -2344,52 +2493,91 @@ struct ContentView: View {
                 }.padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 
                 Group{
-                Text("iPad Acc.")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                HStack{
-                    Spacer()
-                    VStack{
-                        Text("一代 Apple Pencil\n648")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding(.all, 10.0)
-                        Text("二代 Apple Pencil\n895")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("10.9/11'' Magic Keyboard\n2199")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("12.9'' Magic Keyboard\n2549")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
+                    Text("iPad Acc.")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    HStack{
+                        Spacer()
+                        VStack{
+                            Text("1st-Gen \("Apple Pencil")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("645")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("2nd-Gen \("Apple Pencil")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("895")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("Magic Keyboard \("10.9/11''")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("2199")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("Magic Keyboard \("12.9''")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("2549")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                        }
+                        Spacer()
+                        VStack{
+                            Text("Smart Keyboard \("10.2''")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("1159")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("Smart Keyboard Folio \("10.9/11''")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("1199")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("Smart Keyboard Folio \("12.9''")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("1409")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Spacer()
                     }
                     Spacer()
-                    VStack{
-                        
-                        Text("10.2'' Smart Keyboard\n1159")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding(.all, 10.0)
-                        Text("10.9/11'' Smart Keyboard Folio\n1199")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding(.all, 10.0)
-                        Text("12.9'' Smart Keyboard Folio\n1409")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
                     }
-                    Spacer()
+                    
                 }
                 
                 Group{
@@ -2399,7 +2587,7 @@ struct ContentView: View {
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 Spacer()
                 VStack{
-                        Text("Pro App 教育套裝")
+                        Text("Pro Apps Education Bundle")
                             .font(.headline)
                             .fontWeight(.semibold)
                             .fixedSize(horizontal: false, vertical: true)
@@ -2428,14 +2616,19 @@ struct ContentView: View {
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("套裝價: 1298")
+                        Text("Bundle Price")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
-                            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                            .padding([.leading, .top, .trailing])
+                        Text("1298")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .font(.body)
+                            .multilineTextAlignment(.center)
+                            .padding([.leading, .bottom, .trailing])
                         }
                     }
-                }
+                
             } else if scene == 2 {
                 HStack{
                     discountOff
@@ -2444,53 +2637,90 @@ struct ContentView: View {
                 }.padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 
                 Group{
-                Text("iPad Acc.")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                HStack{
-                    Spacer()
-                    VStack{
-                        Text("一代 Apple Pencil\n722")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding(.all, 10.0)
-                        Text("二代 Apple Pencil\n969")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("10.9/11'' Magic Keyboard\n2399")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("12.9'' Magic Keyboard\n2699")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
+                    Text("iPad Acc.")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    HStack{
+                        Spacer()
+                        VStack{
+                            Text("1st-Gen \("Apple Pencil")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("722")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("2nd-Gen \("Apple Pencil")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("969")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("Magic Keyboard \("10.9/11''")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("2399")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("Magic Keyboard \("12.9''")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("2699")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                        }
+                        Spacer()
+                        VStack{
+                            Text("Smart Keyboard \("10.2''")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("1239")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("Smart Keyboard Folio \("10.9/11''")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("1399")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Text("Smart Keyboard Folio \("12.9''")")
+                               .fixedSize(horizontal: false, vertical: true)
+                               .font(.body)
+                               .multilineTextAlignment(.center)
+                               .padding([.leading, .top, .trailing], 10.0)
+                            Text("1558")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.body)
+                                .multilineTextAlignment(.center)
+                                .padding([.leading, .bottom, .trailing], 10.0)
+                            Spacer()
                     }
                     Spacer()
-                    VStack{
-                        
-                        Text("10.2'' Smart Keyboard\n1239")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding(.all, 10.0)
-                        Text("10.9/11'' Smart Keyboard Folio\n1399")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding(.all, 10.0)
-                        Text("12.9'' Smart Keyboard Folio\n1558")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                    }
-                    Spacer()
-                }
+                    }}
                 
                 Group{
                 Text("Mac Apps")
@@ -2499,43 +2729,47 @@ struct ContentView: View {
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 Spacer()
                 VStack{
-                        Text("Pro App 教育套裝")
+                        Text("Pro Apps Education Bundle")
                             .font(.headline)
                             .fontWeight(.semibold)
                             .fixedSize(horizontal: false, vertical: true)
-                        Text("Final Cut Pro\n售價: 1998")
+                        Text("Final Cut Pro\n1998")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .padding(.all, 10.0)
-                        Text("Logic Pro\n售價: 1298")
+                        Text("Logic Pro\n1298")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("Motion\n售價: 328")
+                        Text("Motion\n328")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("Compressor\n售價: 328")
+                        Text("Compressor\n328")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("MainStage\n售價: 198")
+                        Text("MainStage\n198")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("合計: 4150")
+                        Text("Total")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
-                            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                            .padding([.leading, .top, .trailing])
+                        Text("4150")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .font(.body)
+                            .multilineTextAlignment(.center)
+                            .padding([.leading, .bottom, .trailing])
                         }
                     }
-                }
                 
             } else {
                 HStack{
@@ -2552,43 +2786,80 @@ struct ContentView: View {
                 HStack{
                     Spacer()
                     VStack{
-                        Text("一代 Apple Pencil\n74")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding(.all, 10.0)
-                        Text("二代 Apple Pencil\n74")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("10.9/11'' Magic Keyboard\n200")
+                        Text("1st-Gen \("Apple Pencil")")
+                           .fixedSize(horizontal: false, vertical: true)
+                           .font(.body)
+                           .multilineTextAlignment(.center)
+                           .padding([.leading, .top, .trailing], 10.0)
+                        Text("77")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .padding([.leading, .bottom, .trailing], 10.0)
-                        Text("12.9'' Magic Keyboard\n150")
+                        Text("2nd-Gen \("Apple Pencil")")
+                           .fixedSize(horizontal: false, vertical: true)
+                           .font(.body)
+                           .multilineTextAlignment(.center)
+                           .padding([.leading, .top, .trailing], 10.0)
+                        Text("74")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
+                            .padding([.leading, .bottom, .trailing], 10.0)
+                        Text("Magic Keyboard \("10.9/11''")")
+                           .fixedSize(horizontal: false, vertical: true)
+                           .font(.body)
+                           .multilineTextAlignment(.center)
+                           .padding([.leading, .top, .trailing], 10.0)
+                        Text("200")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .font(.body)
+                            .multilineTextAlignment(.center)
+                            .padding([.leading, .bottom, .trailing], 10.0)
+                        Text("Magic Keyboard \("12.9''")")
+                           .fixedSize(horizontal: false, vertical: true)
+                           .font(.body)
+                           .multilineTextAlignment(.center)
+                           .padding([.leading, .top, .trailing], 10.0)
+                        Text("150")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .font(.body)
+                            .multilineTextAlignment(.center)
+                            .padding([.leading, .bottom, .trailing], 10.0)
                     }
                     Spacer()
                     VStack{
-                        
-                        Text("10.2'' Smart Keyboard\n80")
+                        Text("Smart Keyboard \("10.2''")")
+                           .fixedSize(horizontal: false, vertical: true)
+                           .font(.body)
+                           .multilineTextAlignment(.center)
+                           .padding([.leading, .top, .trailing], 10.0)
+                        Text("80")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
-                            .padding(.all, 10.0)
-                        Text("10.9/11'' Smart Keyboard Folio\n200")
+                            .padding([.leading, .bottom, .trailing], 10.0)
+                        Text("Smart Keyboard Folio \("10.9/11''")")
+                           .fixedSize(horizontal: false, vertical: true)
+                           .font(.body)
+                           .multilineTextAlignment(.center)
+                           .padding([.leading, .top, .trailing], 10.0)
+                        Text("200")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
-                            .padding(.all, 10.0)
-                        Text("12.9'' Smart Keyboard Folio\n149")
+                            .padding([.leading, .bottom, .trailing], 10.0)
+                        Text("Smart Keyboard Folio \("12.9''")")
+                           .fixedSize(horizontal: false, vertical: true)
+                           .font(.body)
+                           .multilineTextAlignment(.center)
+                           .padding([.leading, .top, .trailing], 10.0)
+                        Text("149")
                             .fixedSize(horizontal: false, vertical: true)
                             .font(.body)
                             .multilineTextAlignment(.center)
+                            .padding([.leading, .bottom, .trailing], 10.0)
+                        Spacer()
                 }
                 Spacer()
                 }}
@@ -2600,7 +2871,7 @@ struct ContentView: View {
                 .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             Spacer()
             VStack{
-                    Text("Pro App 教育套裝")
+                    Text("Pro Apps Education Bundle")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .fixedSize(horizontal: false, vertical: true)
@@ -2615,7 +2886,7 @@ struct ContentView: View {
         }
         .navigationTitle("Accessory")
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton)
+        .navigationBarItems(leading: backButton, trailing: switchButton)
     }
 }
     
