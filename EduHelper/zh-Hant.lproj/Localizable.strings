@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   EduHelper
 
@@ -11,8 +11,13 @@
 "welcome" = "當前商店地區:";
 "usLocale" = "美國";
 "cnLocale" = "中國大陸";
-//"region" = "中國大陸";
+"usLocaleSymbol" = "美國 - $";
+"cnLocaleSymbol" = "中國大陸 - ￥";
+"Select Region..." = "選擇地區...";
+"Region" = "地區";
+"storeregion" = "商店地區";
 "Accessory" = "配件";
+"info" = "更多資訊";
 "usefullinks" = "實用連結";
 "trademark" = "Apple, AirPods, AppleCare+ logo, Mac, iPad, Apple Pencil, Magic Keyboard, Smart Keyboard, Final Cut Pro, Logic Pro, Motion, Compressor, Mainstage 和 Apple Store 是 Apple Inc. 的商標。";
 "ipadService" = "iPad服務定價";
@@ -51,4 +56,16 @@
 "Bundle Price" = "套裝價格:";
 "Total" = "總價:";
 
+"Summer Shopping Event" = "夏日限時優惠";
+"Service Pricing" = "服務價格对比";
+"AC+ Service Pricing" = "AC+服務價格";
+"Out-of-Warranty Service Pricing" = "保外服務價格";
+"Battery Replacement" = "更換電池";
+"1st-Gen" = "1代";
+"2nd-Gen" = "2代";
+"Magic Keyboard" = "巧控鍵盤";
+"10.2'' Smart Keyboard" = "10.2'' 聰穎鍵盤";
+"Smart Keyboard Folio" = "鍵盤式聰穎雙面夾";
+"Feature List" = "特性表";
+"Credit to EP Team" = "來自EP團隊";
 

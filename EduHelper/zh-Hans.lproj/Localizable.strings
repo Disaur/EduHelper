@@ -11,8 +11,13 @@
 "welcome" = "当前商店地区:";
 "usLocale" = "美国";
 "cnLocale" = "中国大陆";
-//"region" = "中国大陆";
+"usLocaleSymbol" = "美国 - $";
+"cnLocaleSymbol" = "中国大陆 - ￥";
+"Select Region..." = "选择地区...";
+"Region" = "地区";
+"storeregion" = "商店地区";
 "Accessory" = "配件";
+"info" = "更多信息";
 "usefullinks" = "实用链接";
 "trademark" = "Apple, AirPods, AppleCare+ logo, Mac, iPad, Apple Pencil, Magic Keyboard, Smart Keyboard, Final Cut Pro, Logic Pro, Motion, Compressor, Mainstage 和 Apple Store 是 Apple Inc. 的商标。";
 "ipadService" = "iPad服务定价";
@@ -51,4 +56,16 @@
 "Bundle Price" = "套装价格:";
 "Total" = "总价:";
 
+"Summer Shopping Event" = "夏日限时优惠";
+"Service Pricing" = "服务价格对比";
+"AC+ Service Pricing" = "AC+服务价格";
+"Out-of-Warranty Service Pricing" = "保外服务价格";
+"Battery Replacement" = "更换电池";
+"1st-Gen" = "1代";
+"2nd-Gen" = "2代";
+"Magic Keyboard" = "秒控键盘";
+"Smart Keyboard" = "10.2'' 智能键盘";
+"Smart Keyboard Folio" = "键盘式智能双面夹";
+"Feature List" = "特性表";
+"Credit to EP Team" = "来自EP团队";
 

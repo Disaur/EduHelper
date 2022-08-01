@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   EduHelper
 
@@ -11,8 +11,13 @@
 "welcome" = "Current Store Locale:";
 "usLocale" = "United States";
 "cnLocale" = "Mainland China";
-//"region" = "Mainland China";
+"usLocaleSymbol" = "United States - $";
+"cnLocaleSymbol" = "Mainland China - ￥";
+"Select Region..." = "Select Region...";
+"Region" = "Region";
+"storeregion" = "Store Region";
 "Accessory" = "Accessory";
+"info" = "More Info";
 "usefullinks" = "Useful Links";
 "trademark" = "Apple, AirPods, the AppleCare+ logo, Mac, iPad, Apple Pencil, Magic Keyboard, Smart Keyboard, Final Cut Pro, Logic Pro, Motion, Compressor, Mainstage and Apple Store are trademarks of Apple Inc.";
 "ipadService" = "iPad Service Pricing";
@@ -51,4 +56,16 @@
 "Bundle Price" = "Bundle Price:";
 "Total" = "Total:";
 
+"Summer Shopping Event" = "Summer Shopping Event";
+"Service Pricing" = "Service Pricing Comparison";
+"AC+ Service Pricing" = "AC+ Service Pricing";
+"Out-of-Warranty Service Pricing" = "Out-of-Warranty Service Pricing";
+"Battery Replacement" = "Battery Replacement";
+"1st-Gen" = "1st-Gen";
+"2nd-Gen" = "2nd-Gen";
+"Magic Keyboard" = "Magic Keyboard";
+"10.2'' Smart Keyboard" = "10.2'' Smart Keyboard";
+"Smart Keyboard Folio" = "Smart Keyboard Folio";
+"Feature List" = "Feature List";
+"Credit to EP Team" = "Credit to EP Team";
 
